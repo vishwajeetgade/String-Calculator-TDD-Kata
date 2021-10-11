@@ -1,11 +1,12 @@
 function add(num) {
     if(!num) return 0;
     let number;
-    if(num.includes("//;")){
-        number = num.replace("//;\n", '').replace(";", ',').split(",").map(i => parseInt(i));
-    }else{
+    if(num.includes("-")){
         number = num.replace(/(\r\n|\n|\r)/gm, ',').split(",").map(i => parseInt(i));
         if(number.some(i => i < 0)) throw new Error("negatives not allowed")
+        
+    }else{
+        number = num.match(/\d/g).map(i => parseInt(i));
     }
     return number.reduce((prev, curr) => prev+curr,0 );
 }
@@ -40,7 +41,7 @@ describe("Add Numbers", () => {
  
     //case - 6
     it("Negative values are not allowed", () => {
-        expect(() => add("-1")).toThrow("negatives not allowed");
+        expect(() => add("-1,")).toThrow("negatives not allowed");
     })
 
     //case - 7
