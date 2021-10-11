@@ -1,0 +1,8 @@
+// Provides VS Code autocomplete
+{
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}
