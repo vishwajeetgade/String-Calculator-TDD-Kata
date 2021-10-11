@@ -1,18 +1,17 @@
 function getInt(num) {
-    if(num.includes(",")) {
-        let numInt = num.split(",").map(Number);
-        return numInt;
-    }else{
+    if (num.includes(",")) {
+        let sum = num.split(",").map(i => parseInt(i)).reduce((prev, curr) => prev + curr, 0);
+        return sum;
+    } else {
         return parseInt(num);
     }
 }
 
 function add(num) {
-    if(!num) return 0;
-    else if(num.includes(",")){
-        const val = getInt(num);
-        return val[0] + val[1];
-    }else{
+    if (!num) return 0;
+    else if (num.includes(",")) {
+        return getInt(num);
+    } else {
         return getInt(num);
     }
 }
@@ -24,12 +23,15 @@ describe("Add Numbers", () => {
         //expect() - what output is , toBe() - what output should be
         expect(add("")).toBe(0);
     });
-    
+
     it("return a num", () => {
         expect(add("1")).toBe(1);
     })
 
     it("add two number by comma separating", () => {
         expect(add("1,2")).toBe(3);
+    })
+    it("adding multiple numbers by comma separating", () => {
+        expect(add("1,2,3,4")).toBe(10);
     })
 })
