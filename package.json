@@ -5,7 +5,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "test": "jest --watchAll --verbose --coverage"
+    "test": "jest --watchAll --verbose"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
